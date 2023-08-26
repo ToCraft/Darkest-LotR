@@ -4,7 +4,7 @@ license="https://github.com/ToCraft/Darkest-LotR/blob/master/LICENSE.md"
 issueTrackerURL="https://github.com/ToCraft/Darkest-LotR/issues"
 [[mods]]
 modId="darkestlotr"
-version="${file.jarVersion}"
+version="${version}"
 displayName="Darkest LotR"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 #displayURL="https://github.com/ToCraft/Darkest-LotR/releases"
