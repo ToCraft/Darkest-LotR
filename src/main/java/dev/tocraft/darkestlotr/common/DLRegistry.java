@@ -49,7 +49,7 @@ public class DLRegistry {
     }
 
     private static RegistryObject<Item> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed) {
-        return regSwordItem(name, tier, atkdamage, atkspeed, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT));
+        return regSwordItem(name, tier, atkdamage, atkspeed, new Item.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
     private static RegistryObject<Item> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed, Item.Properties properties) {
@@ -57,7 +57,7 @@ public class DLRegistry {
     }
 
     private static RegistryObject<Item> regArmorItem(String name, IArmorMaterial material, EquipmentSlotType slot) {
-        return regArmorItem(name, material,  slot, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
+        return regArmorItem(name, material,  slot, new Item.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
     private static RegistryObject<Item> regArmorItem(String name, IArmorMaterial material,  EquipmentSlotType slot, Item.Properties properties) {
@@ -65,7 +65,7 @@ public class DLRegistry {
     }
 
     private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material) {
-        return regShieldItem(name, material, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
+        return regShieldItem(name, material, new Item.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
     private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material, Item.Properties properties) {
