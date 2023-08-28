@@ -19,14 +19,14 @@ public class DLRegistry {
     private static final DeferredRegister<Item> ITEMS;
 
     // Malee-Weapons
-    public static final RegistryObject<SwordItem> EXAMPLESWORD;
+    public static final RegistryObject<Item> EXAMPLESWORD;
     // Armor
-    public static final RegistryObject<ArmorItem> EXAMPLE_HEAD;
-    public static final RegistryObject<ArmorItem> EXAMPLE_CHEST;
-    public static final RegistryObject<ArmorItem> EXAMPLE_LEGS;
-    public static final RegistryObject<ArmorItem> EXAMPLE_FEET;
+    public static final RegistryObject<Item> EXAMPLE_HEAD;
+    public static final RegistryObject<Item> EXAMPLE_CHEST;
+    public static final RegistryObject<Item> EXAMPLE_LEGS;
+    public static final RegistryObject<Item> EXAMPLE_FEET;
     // Shields
-    public static final RegistryObject<ShieldItem> EXAMPLE_SHIELD;
+    public static final RegistryObject<Item> EXAMPLE_SHIELD;
 
 
     static {
@@ -48,27 +48,27 @@ public class DLRegistry {
         DarkestLotR.LOGGER.info("Registered Items");
     }
 
-    private static RegistryObject<SwordItem> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed) {
+    private static RegistryObject<Item> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed) {
         return regSwordItem(name, tier, atkdamage, atkspeed, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
-    private static RegistryObject<SwordItem> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed, Item.Properties properties) {
+    private static RegistryObject<Item> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed, Item.Properties properties) {
         return ITEMS.register(name, () -> new SwordItem(tier, atkdamage, atkspeed, properties));
     }
 
-    private static RegistryObject<ArmorItem> regArmorItem(String name, IArmorMaterial material, EquipmentSlotType slot) {
+    private static RegistryObject<Item> regArmorItem(String name, IArmorMaterial material, EquipmentSlotType slot) {
         return regArmorItem(name, material,  slot, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
-    private static RegistryObject<ArmorItem> regArmorItem(String name, IArmorMaterial material,  EquipmentSlotType slot, Item.Properties properties) {
+    private static RegistryObject<Item> regArmorItem(String name, IArmorMaterial material,  EquipmentSlotType slot, Item.Properties properties) {
         return ITEMS.register(name, () -> new ArmorItem(material, slot, properties));
     }
 
-    private static RegistryObject<ShieldItem> regShieldItem(String name, IArmorMaterial material) {
+    private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material) {
         return regShieldItem(name, material, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
-    private static RegistryObject<ShieldItem> regShieldItem(String name, IArmorMaterial material, Item.Properties properties) {
+    private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material, Item.Properties properties) {
         return ITEMS.register(name, () -> new ShieldItem(properties));
     }
 }
