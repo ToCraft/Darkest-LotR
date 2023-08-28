@@ -1,11 +1,11 @@
 {
-	"parent": "lotr:item/example_shield",
+	"parent": "darkestlotr:item/example_shield",
 	"overrides": [
 		{
 			"predicate": {
 				"blocking": 1
 			},
-			"model": "lotr:item/example_shield_blocking"
+			"model": "darkestlotr:item/example_shield_blocking"
 		}
 	],
 	"display": {
