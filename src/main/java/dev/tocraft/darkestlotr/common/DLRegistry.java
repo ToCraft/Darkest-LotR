@@ -1,6 +1,7 @@
 package dev.tocraft.darkestlotr.common;
 
 import dev.tocraft.darkestlotr.DarkestLotR;
+import dev.tocraft.darkestlotr.common.item.DLArmorItem;
 import lotr.common.init.LOTRMaterial;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -30,10 +31,10 @@ public class DLRegistry {
         // Register Malee-Weapons
         EXAMPLESWORD = ITEMS.register("examplesword", () -> new SwordItem(ItemTier.IRON, 3, 2.4F, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT)));
         // Register Armor
-        EXAMPLEARMOR_HEAD = ITEMS.register("examplearmor_head", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.HEAD, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_CHEST = ITEMS.register("examplearmor_chest", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.CHEST, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_LEGS = ITEMS.register("examplearmor_legs", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.LEGS, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_FEET = ITEMS.register("examplearmor_feet", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.FEET, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLEARMOR_HEAD = ITEMS.register("examplearmor_head", () -> new DLArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.HEAD));
+        EXAMPLEARMOR_CHEST = ITEMS.register("examplearmor_chest", () -> new DLArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.CHEST));
+        EXAMPLEARMOR_LEGS = ITEMS.register("examplearmor_legs", () -> new DLArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.LEGS));
+        EXAMPLEARMOR_FEET = ITEMS.register("examplearmor_feet", () -> new DLArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.FEET));
     }
 
     public static void registerItems() {
