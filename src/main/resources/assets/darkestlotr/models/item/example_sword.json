@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+        "textures": {
+        "layer0": "darkestlotr:item/example_sword"
+    }
+}
