@@ -13,16 +13,16 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class Registry {
+public class DLRegistry {
     private static final DeferredRegister<Item> ITEMS;
 
     // Malee-Weapons
-    public static final RegistryObject<Item> EXAMPLESWORD;
+    public static final RegistryObject<SwordItem> EXAMPLESWORD;
     // Armor
-    public static final RegistryObject<Item> EXAMPLEARMOR_HEAD;
-    public static final RegistryObject<Item> EXAMPLEARMOR_CHEST;
-    public static final RegistryObject<Item> EXAMPLEARMOR_LEGS;
-    public static final RegistryObject<Item> EXAMPLEARMOR_FEET;
+    public static final RegistryObject<ArmorItem> EXAMPLEARMOR_HEAD;
+    public static final RegistryObject<ArmorItem> EXAMPLEARMOR_CHEST;
+    public static final RegistryObject<ArmorItem> EXAMPLEARMOR_LEGS;
+    public static final RegistryObject<ArmorItem> EXAMPLEARMOR_FEET;
 
 
     static {
@@ -34,8 +34,6 @@ public class Registry {
         EXAMPLEARMOR_CHEST = ITEMS.register("examplearmor_chest", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.CHEST, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
         EXAMPLEARMOR_LEGS = ITEMS.register("examplearmor_legs", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.LEGS, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
         EXAMPLEARMOR_FEET = ITEMS.register("examplearmor_feet", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.FEET, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-
-
     }
 
     public static void registerItems() {

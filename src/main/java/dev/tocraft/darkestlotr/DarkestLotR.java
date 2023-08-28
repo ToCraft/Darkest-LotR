@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dev.tocraft.darkestlotr.common.Registry;
+import dev.tocraft.darkestlotr.common.DLRegistry;
 
 @Mod("darkestlotr")
 public class DarkestLotR
@@ -16,6 +16,6 @@ public class DarkestLotR
 
     public DarkestLotR() {
         MinecraftForge.EVENT_BUS.register(this);
-        Registry.registerItems();
+        DLRegistry.registerItems();
     }
 }
