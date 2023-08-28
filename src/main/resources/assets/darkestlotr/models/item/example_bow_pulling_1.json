@@ -1,0 +1,6 @@
+{
+    "parent": "darkestlotr:item/example_bow",
+    "textures": {
+        "layer0": "darkestlotr:item/example_bow_pulling_1"
+    }
+}
