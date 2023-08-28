@@ -2,9 +2,11 @@ package dev.tocraft.darkestlotr.common;
 
 import dev.tocraft.darkestlotr.DarkestLotR;
 import dev.tocraft.darkestlotr.common.material.DLMaterial;
+import lotr.common.init.LOTRItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BowItem;
+import net.minecraft.item.Food.Builder;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
@@ -30,6 +32,8 @@ public class DLRegistry {
     public static final RegistryObject<Item> EXAMPLE_FEET;
     // Shields
     public static final RegistryObject<Item> EXAMPLE_SHIELD;
+    // Food
+    public static final RegistryObject<Item> EXAMPLE_FOOD;
 
 
     static {
@@ -44,7 +48,9 @@ public class DLRegistry {
         EXAMPLE_LEGS = regArmorItem("example_leggings", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.LEGS);
         EXAMPLE_FEET = regArmorItem("example_boots", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.FEET);
         // Register Shields
-        EXAMPLE_SHIELD = regShieldItem("example_shield", DLMaterial.EXAMPLE.asArmor());
+        EXAMPLE_SHIELD = regShieldItem("example_shield");
+        // Register Food
+        EXAMPLE_FOOD = regFoodItem("example_food", 8, 1.0F);
     }
 
     public static void registerItems() {
@@ -77,11 +83,19 @@ public class DLRegistry {
         return ITEMS.register(name, () -> new ArmorItem(material, slot, properties));
     }
 
-    private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material) {
-        return regShieldItem(name, material, new Item.Properties().tab(ItemGroup.TAB_COMBAT));
+    private static RegistryObject<Item> regShieldItem(String name) {
+        return regShieldItem(name, new Item.Properties().tab(ItemGroup.TAB_COMBAT));
     }
 
-    private static RegistryObject<Item> regShieldItem(String name, IArmorMaterial material, Item.Properties properties) {
+    private static RegistryObject<Item> regShieldItem(String name, Item.Properties properties) {
+        return ITEMS.register(name, () -> new ShieldItem(properties));
+    }
+
+    private static RegistryObject<Item> regFoodItem(String name, int nutrions, float saturaionMod) {
+        return regFoodItem(name, new Item.Properties().tab(ItemGroup.TAB_FOOD).food(new Builder().nutrition(nutrions).saturationMod(saturaionMod).build()));
+    }
+
+    private static RegistryObject<Item> regFoodItem(String name, Item.Properties properties) {
         return ITEMS.register(name, () -> new ShieldItem(properties));
     }
 }
