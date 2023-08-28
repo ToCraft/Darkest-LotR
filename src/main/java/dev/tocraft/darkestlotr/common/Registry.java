@@ -15,6 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class Registry {
     private static final DeferredRegister<Item> ITEMS;
 
+    // Malee-Weapons
     public static final RegistryObject<Item> EXAMPLESWORD;
 
     static {
