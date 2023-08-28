@@ -19,7 +19,7 @@ public class DLRegistry {
     private static final DeferredRegister<Item> ITEMS;
 
     // Malee-Weapons
-    public static final RegistryObject<Item> EXAMPLESWORD;
+    public static final RegistryObject<Item> EXAMPLE_SWORD;
     // Armor
     public static final RegistryObject<Item> EXAMPLE_HEAD;
     public static final RegistryObject<Item> EXAMPLE_CHEST;
@@ -32,7 +32,7 @@ public class DLRegistry {
     static {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DarkestLotR.modid);
         // Register Malee-Weapons
-        EXAMPLESWORD = regSwordItem("example_sword", DLMaterial.EXAMPLE.asTool(), 3, 2.4F);
+        EXAMPLE_SWORD = regSwordItem("example_sword", DLMaterial.EXAMPLE.asTool(), 3, 2.4F);
         // Register Armor
         EXAMPLE_HEAD = regArmorItem("example_helmet", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.HEAD);
         EXAMPLE_CHEST = regArmorItem("example_chestplate", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.CHEST);
