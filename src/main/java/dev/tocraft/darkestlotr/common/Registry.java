@@ -1,7 +1,5 @@
 package dev.tocraft.darkestlotr.common;
 
-import java.util.function.Supplier;
-
 import dev.tocraft.darkestlotr.DarkestLotR;
 import lotr.common.init.LOTRMaterial;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -30,12 +28,12 @@ public class Registry {
     static {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DarkestLotR.modid);
         // Register Malee-Weapons
-        EXAMPLESWORD = regItem("examplesword", () -> new SwordItem(ItemTier.IRON, 3, 2.4F, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLESWORD = ITEMS.register("examplesword", () -> new SwordItem(ItemTier.IRON, 3, 2.4F, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT)));
         // Register Armor
-        EXAMPLEARMOR_HEAD = regItem("examplearmor_head", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.HEAD, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_CHEST = regItem("examplearmor_chest", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.CHEST, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_LEGS = regItem("examplearmor_legs", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.LEGS, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLEARMOR_FEET = regItem("examplearmor_feet", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.FEET, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLEARMOR_HEAD = ITEMS.register("examplearmor_head", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.HEAD, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLEARMOR_CHEST = ITEMS.register("examplearmor_chest", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.CHEST, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLEARMOR_LEGS = ITEMS.register("examplearmor_legs", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.LEGS, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLEARMOR_FEET = ITEMS.register("examplearmor_feet", () -> new ArmorItem(LOTRMaterial.BRONZE.asArmor(), EquipmentSlotType.FEET, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
 
 
     }
@@ -45,9 +43,4 @@ public class Registry {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         DarkestLotR.LOGGER.info("Registered Items");
     }
-
-    private static RegistryObject<Item> regItem(String name, Supplier<Item> sup) {
-		RegistryObject<Item> item = ITEMS.register(name, sup);
-		return item;
-	}
 }
