@@ -4,6 +4,8 @@ import dev.tocraft.darkestlotr.DarkestLotR;
 import dev.tocraft.darkestlotr.common.material.DLMaterial;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SwordItem;
@@ -27,17 +29,33 @@ public class DLRegistry {
     static {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DarkestLotR.modid);
         // Register Malee-Weapons
-        EXAMPLESWORD = ITEMS.register("example_sword", () -> new SwordItem(DLMaterial.EXAMPLE.asTool(), 3, 2.4F, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLESWORD = regSwordItem("example_sword", DLMaterial.EXAMPLE.asTool(), 3, 2.4F);
         // Register Armor
-        EXAMPLE_HEAD = ITEMS.register("example_helmet", () -> new ArmorItem(DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.HEAD, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLE_CHEST = ITEMS.register("example_chestplate", () -> new ArmorItem(DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.CHEST, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLE_LEGS = ITEMS.register("example_leggings", () -> new ArmorItem(DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.LEGS, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
-        EXAMPLE_FEET = ITEMS.register("example_boots", () -> new ArmorItem(DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.FEET, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT)));
+        EXAMPLE_HEAD = regArmorItem("example_helmet", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.HEAD);
+        EXAMPLE_CHEST = regArmorItem("example_chestplate", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.CHEST);
+        EXAMPLE_LEGS = regArmorItem("example_leggings", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.LEGS);
+        EXAMPLE_FEET = regArmorItem("example_boots", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.FEET);
     }
 
     public static void registerItems() {
         // Register all Items
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         DarkestLotR.LOGGER.info("Registered Items");
+    }
+
+    private static RegistryObject<SwordItem> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed) {
+        return regSwordItem(name, tier, atkdamage, atkspeed, new SwordItem.Properties().tab(ItemGroup.TAB_COMBAT));
+    }
+
+    private static RegistryObject<SwordItem> regSwordItem(String name, IItemTier tier, int atkdamage, float atkspeed, Item.Properties properties) {
+        return ITEMS.register(name, () -> new SwordItem(tier, atkdamage, atkspeed, properties));
+    }
+
+    private static RegistryObject<ArmorItem> regArmorItem(String name, IArmorMaterial material, EquipmentSlotType slot) {
+        return regArmorItem(name, material,  slot, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
+    }
+
+    private static RegistryObject<ArmorItem> regArmorItem(String name, IArmorMaterial material,  EquipmentSlotType slot, Item.Properties properties) {
+        return ITEMS.register(name, () -> new ArmorItem(material, slot, properties));
     }
 }
