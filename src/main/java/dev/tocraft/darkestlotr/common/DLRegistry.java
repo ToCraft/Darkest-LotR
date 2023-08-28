@@ -8,6 +8,7 @@ import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ShieldItem;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,6 +25,8 @@ public class DLRegistry {
     public static final RegistryObject<ArmorItem> EXAMPLE_CHEST;
     public static final RegistryObject<ArmorItem> EXAMPLE_LEGS;
     public static final RegistryObject<ArmorItem> EXAMPLE_FEET;
+    // Shields
+    public static final RegistryObject<ShieldItem> EXAMPLE_SHIELD;
 
 
     static {
@@ -35,6 +38,8 @@ public class DLRegistry {
         EXAMPLE_CHEST = regArmorItem("example_chestplate", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.CHEST);
         EXAMPLE_LEGS = regArmorItem("example_leggings", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.LEGS);
         EXAMPLE_FEET = regArmorItem("example_boots", DLMaterial.EXAMPLE.asArmor(), EquipmentSlotType.FEET);
+        // Register Shields
+        EXAMPLE_SHIELD = regShieldItem("example_shield", DLMaterial.EXAMPLE.asArmor());
     }
 
     public static void registerItems() {
@@ -57,5 +62,13 @@ public class DLRegistry {
 
     private static RegistryObject<ArmorItem> regArmorItem(String name, IArmorMaterial material,  EquipmentSlotType slot, Item.Properties properties) {
         return ITEMS.register(name, () -> new ArmorItem(material, slot, properties));
+    }
+
+    private static RegistryObject<ShieldItem> regShieldItem(String name, IArmorMaterial material) {
+        return regShieldItem(name, material, new ArmorItem.Properties().tab(ItemGroup.TAB_COMBAT));
+    }
+
+    private static RegistryObject<ShieldItem> regShieldItem(String name, IArmorMaterial material, Item.Properties properties) {
+        return ITEMS.register(name, () -> new ShieldItem(properties));
     }
 }
